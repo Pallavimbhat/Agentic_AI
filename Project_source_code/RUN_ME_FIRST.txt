@@ -1,0 +1,24 @@
+AGENTIC AI COURSE ORGANISER — START HERE
+
+1. Extract this ZIP.
+2. Open the folder containing course_organizer, agentic_core, lab1..lab14 and requirements.txt.
+3. Open a terminal in that folder and run:
+
+   py -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   python -m pip install -r requirements.txt
+   python -m uvicorn course_organizer.main:app --host 127.0.0.1 --port 8002
+
+4. Visit http://127.0.0.1:8002/
+5. Student login: test.student@example.com / student123
+   Professor login: test.professor@example.com / professor123
+6. Use the single Academic AI Assistant. The file DEMO_PROMPT_BANK_14_LABS.md
+   contains 2–3 different prompts for each lab and stateful sequences.
+7. Run python -m pytest -q to execute the regression suite.
+
+The application works in deterministic local-agent mode without an API key.
+Optional model-assisted routing can be enabled by copying .env.example to .env
+and setting AI_API_BASE_URL, AI_API_KEY and AI_MODEL. No key is included.
+
+IMPORTANT: run commands from the project root — the folder where
+course_organizer\main.py and requirements.txt are visible.
