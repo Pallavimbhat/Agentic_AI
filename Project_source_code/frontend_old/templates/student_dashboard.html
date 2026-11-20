@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Workspace | {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="/static/js/dashboard.js" defer></script>
+</head>
+<body data-role="student">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/student"><span class="brand-mark">A</span><span>Academic<span>Flow</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="/student">▦ <span>Overview</span></a>
+      <a class="nav-link" href="#courses">▤ <span>My Courses</span></a>
+      <a class="nav-link" href="#courses">▧ <span>Learning Materials</span></a>
+      <a class="nav-link" href="#coming-soon">▣ <span>Assignments</span></a>
+      <a class="nav-link" href="#coming-soon">✓ <span>Grades & Feedback</span></a>
+      <a class="nav-link" href="#coming-soon">◇ <span>My Projects</span></a>
+      <a class="nav-link" href="#coming-soon">✦ <span>AI Study Assistant</span></a>
+      <div class="side-bottom"><div class="side-label">ACCOUNT</div><button class="nav-link logout-button" id="logout-button">↪ <span>Sign out</span></button></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="breadcrumb">Workspace / Overview</div><h1>Student Dashboard</h1></div>
+        <div class="profile-chip"><div class="avatar" id="user-avatar">S</div><div><strong id="user-name">Loading…</strong><small>Student</small></div></div>
+      </header>
+      <section class="welcome-row">
+        <div><p class="eyebrow">YOUR LEARNING WORKSPACE</p><h2>Welcome back, <span id="welcome-name">Student</span> 👋</h2><p class="muted">Your courses, learning materials and academic progress in one place.</p></div>
+        <div class="date-chip" id="today-date"></div>
+      </section>
+      <section class="stats-grid">
+        <article class="stat-card"><span class="stat-icon purple">▤</span><p>Enrolled courses</p><strong id="course-count">—</strong><small>Your active learning spaces</small></article>
+        <article class="stat-card"><span class="stat-icon blue">◎</span><p>Account status</p><strong id="account-status">—</strong><small>Authenticated session</small></article>
+        <article class="stat-card"><span class="stat-icon green">✦</span><p>Workspace role</p><strong>Student</strong><small>Role-based access enabled</small></article>
+      </section>
+      <section class="content-card" id="courses">
+        <div class="section-heading"><div><p class="eyebrow">YOUR LEARNING</p><h2>My Courses</h2><p class="muted">Your enrolled courses loaded from the Course Organizer API.</p></div><button class="outline-button" id="refresh-button">↻ Refresh</button></div>
+        <div id="course-list" class="course-list"><div class="loading-state">Loading your courses…</div></div>
+      </section>
+      <section class="content-card coming-card" id="coming-soon">
+        <p class="eyebrow">YOUR ACADEMIC TOOLS</p><h2>Keep learning in one place</h2>
+        <p class="muted">Assignments, submissions, published grades, project milestones and the AI study assistant will be connected here in the next implementation steps.</p>
+      </section>
+      <p class="page-foot">AcademicFlow · Student workspace</p>
+    </main>
+  </div>
+</body>
+</html>

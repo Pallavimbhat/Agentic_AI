@@ -1,0 +1,5 @@
+Machine learning is an important area of artificial intelligence that allows computers to identify patterns and learn from available data.
+
+In supervised learning, algorithms are trained using labelled training data. Popular algorithms include decision tree classifiers, random forest models and support vector machines.
+
+We can measure model performance using evaluation metrics such as precision, recall, accuracy and the F1 score.

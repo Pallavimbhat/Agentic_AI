@@ -1,0 +1,16 @@
+Introduction to Machine Learning – Updated Notes
+
+Machine Learning is a branch of Artificial Intelligence that enables systems to learn from data and improve their performance.
+
+Major approaches include:
+
+1. Supervised Learning
+Uses labelled training data. Examples include Decision Trees, Random Forests and Support Vector Machines.
+
+2. Unsupervised Learning
+Identifies patterns in unlabelled datasets using clustering and dimensionality reduction.
+
+3. Reinforcement Learning
+An agent learns through interaction with an environment using rewards and penalties.
+
+Applications include healthcare, recommendation systems, fraud detection and autonomous vehicles.

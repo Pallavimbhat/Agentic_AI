@@ -1,0 +1,14 @@
+Introduction to Machine Learning
+
+Machine Learning is a branch of Artificial Intelligence that enables computers to learn patterns from data and make predictions without being explicitly programmed.
+
+Types of Machine Learning:
+
+1. Supervised Learning
+Supervised learning uses labelled datasets to train models. Common algorithms include Decision Trees, Random Forests and Support Vector Machines.
+
+2. Unsupervised Learning
+Unsupervised learning works with unlabelled data to identify hidden patterns and groups. Common techniques include clustering and dimensionality reduction.
+
+3. Reinforcement Learning
+Reinforcement learning trains an agent through rewards and penalties based on its actions in an environment.

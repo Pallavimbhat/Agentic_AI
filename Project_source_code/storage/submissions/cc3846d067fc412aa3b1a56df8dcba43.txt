@@ -1,0 +1,1 @@
+Supervised Learning is a type of Machine Learning in which a model is trained using labelled data to learn the relationship between inputs and outputs. It is mainly divided into classification and regression and is used for tasks such as student performance prediction, spam detection, price forecasting and disease diagnosis.

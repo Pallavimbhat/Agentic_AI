@@ -1,0 +1,7 @@
+Machine learning is a branch of artificial intelligence that enables computers to learn from data without being explicitly programmed.
+
+Supervised learning is a machine learning technique in which models are trained using labelled datasets. Decision trees, random forests and support vector machines are commonly used supervised learning algorithms.
+
+The performance of these algorithms can be evaluated using accuracy, precision, recall and F1 score.
+
+Machine learning models can also be improved through hyperparameter tuning and cross-validation techniques.

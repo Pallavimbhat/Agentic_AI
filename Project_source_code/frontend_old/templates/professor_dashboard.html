@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor Workspace | {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="/static/js/dashboard.js" defer></script>
+</head>
+<body data-role="professor">
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="/professor"><span class="brand-mark">A</span><span>Academic<span>Flow</span></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-link active" data-section="overview">▦ <span>Overview</span></button>
+    <button class="nav-link" data-section="courses">▤ <span>My Courses</span></button>
+    <button class="nav-link" data-section="materials">▧ <span>Learning Materials</span></button>
+    <button class="nav-link" data-section="assignments">▣ <span>Assignments</span></button>
+    <button class="nav-link" data-section="submissions">◫ <span>Submissions & Reviews</span></button>
+    <button class="nav-link" data-section="grading">✓ <span>Grading</span></button>
+    <button class="nav-link" data-section="projects">◇ <span>Student Projects</span></button>
+    <div class="side-bottom"><div class="side-label">ACCOUNT</div><button class="nav-link logout-button" id="logout-button">↪ <span>Sign out</span></button></div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar">
+      <div><div class="breadcrumb" id="breadcrumb">Workspace / Overview</div><h1 id="page-title">Professor Dashboard</h1></div>
+      <div class="profile-chip"><div class="avatar" id="user-avatar">P</div><div><strong id="user-name">Loading…</strong><small>Professor</small></div></div>
+    </header>
+    <div id="notice" class="notice" hidden></div>
+    <section class="welcome-row" id="welcome-panel">
+      <div><p class="eyebrow">YOUR ACADEMIC WORKSPACE</p><h2>Welcome back, <span id="welcome-name">Professor</span> 👋</h2><p class="muted">Manage your courses and keep your academic activities moving.</p></div>
+      <div class="date-chip" id="today-date"></div>
+    </section>
+    <section class="stats-grid" id="stats-panel">
+      <article class="stat-card"><span class="stat-icon purple">▤</span><p>My courses</p><strong id="course-count">—</strong><small>Courses assigned to you</small></article>
+      <article class="stat-card"><span class="stat-icon blue">◎</span><p>Account status</p><strong id="account-status">—</strong><small>Authenticated session</small></article>
+      <article class="stat-card"><span class="stat-icon green">✦</span><p>Workspace role</p><strong>Professor</strong><small>Role-based access enabled</small></article>
+    </section>
+
+    <section class="workspace-section" id="section-overview">
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">ACADEMIC MANAGEMENT</p><h2>My Courses</h2><p class="muted">Your courses loaded from the Course Organizer API.</p></div><button class="outline-button" id="refresh-button">↻ Refresh</button></div><div id="course-list" class="course-list"><div class="loading-state">Loading your courses…</div></div></div>
+      <div class="content-card"><p class="eyebrow">WORKSPACE</p><h2>Quick actions</h2><div class="action-row"><button class="primary-button" data-go="courses">Create course</button><button class="outline-button" data-go="materials">Upload learning material</button><button class="outline-button" data-go="assignments">Create assignment</button></div></div>
+    </section>
+
+    <section class="workspace-section" id="section-courses" hidden>
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">COURSE MANAGEMENT</p><h2>My Courses</h2><p class="muted">Create courses and view courses assigned to your account.</p></div><button class="outline-button" data-reload="courses">↻ Refresh</button></div>
+        <form id="course-form" class="form-grid"><label>Course code<input name="course_code" required maxlength="20" placeholder="AIC706"></label><label>Course name<input name="course_name" required placeholder="Course title"></label><label>Semester<input name="semester" type="number" min="1" required value="8"></label><label class="full">Description<textarea name="description" rows="2" placeholder="Brief course description"></textarea></label><div class="full"><button class="primary-button">Create course</button></div></form>
+        <div id="courses-panel" class="data-list"></div>
+      </div>
+    </section>
+
+    <section class="workspace-section" id="section-materials" hidden>
+      <div class="content-card"><p class="eyebrow">LEARNING RESOURCES</p><h2>Upload learning material</h2><p class="muted">Upload PDF, DOCX, PPTX, TXT or Markdown notes (maximum 20 MB).</p>
+        <form id="note-form" class="form-grid"><label>Course<select name="course_id" id="note-course" required></select></label><label>Title<input name="title" required placeholder="Unit 1 notes"></label><label class="full">Description<textarea name="description" rows="2"></textarea></label><label class="full">File<input name="file" type="file" accept=".pdf,.docx,.pptx,.txt,.md" required></label><div class="full"><button class="primary-button">Upload notes</button></div></form>
+      </div>
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">PUBLISHED RESOURCES</p><h2>Learning materials</h2></div><button class="outline-button" data-reload="materials">↻ Refresh</button></div><div id="materials-panel" class="data-list"></div></div>
+    </section>
+
+    <section class="workspace-section" id="section-assignments" hidden>
+      <div class="content-card"><p class="eyebrow">ASSESSMENT MANAGEMENT</p><h2>Create assignment</h2>
+        <form id="assignment-form" class="form-grid"><label>Course<select name="course_id" id="assignment-course" required></select></label><label>Title<input name="title" required minlength="3"></label><label class="full">Description<textarea name="description" required minlength="5" rows="2"></textarea></label><label class="full">Instructions<textarea name="instructions" rows="2"></textarea></label><label>Maximum marks<input name="maximum_marks" type="number" min="1" step="0.5" required value="100"></label><label>Deadline<input name="deadline" type="datetime-local" required></label><label>Status<select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></label><div class="full"><button class="primary-button">Create assignment</button></div></form>
+      </div>
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">ASSESSMENTS</p><h2>Course assignments</h2></div><button class="outline-button" data-reload="assignments">↻ Refresh</button></div><div id="assignments-panel" class="data-list"></div></div>
+    </section>
+
+    <section class="workspace-section" id="section-submissions" hidden>
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">STUDENT WORK</p><h2>Submissions & similarity reviews</h2><p class="muted">Choose an assignment to inspect its submissions and similarity reports.</p></div><button class="outline-button" data-reload="submissions">↻ Refresh</button></div><label class="select-inline">Assignment<select id="submission-assignment"></select></label><div id="submissions-panel" class="data-list"></div></div>
+    </section>
+
+    <section class="workspace-section" id="section-grading" hidden>
+      <div class="content-card"><p class="eyebrow">EVALUATION</p><h2>Grade a submission</h2><p class="muted">Enter marks and feedback. Approval and publication are separate actions.</p>
+        <form id="grade-form" class="form-grid"><label>Submission ID<input name="submission_id" type="number" min="1" required></label><label>Final marks<input name="final_marks" type="number" min="0" step="0.5" required></label><label>Suggested marks (optional)<input name="suggested_marks" type="number" min="0" step="0.5"></label><label class="full">Professor feedback<textarea name="professor_feedback" required minlength="1" rows="3"></textarea></label><label class="full">AI feedback (optional)<textarea name="ai_feedback" rows="2"></textarea></label><div class="full"><button class="primary-button">Save grade</button></div></form><div id="grade-result" class="data-list"></div>
+      </div>
+      <div class="content-card"><p class="eyebrow">GRADE WORKFLOW</p><h2>Approve or publish a grade</h2><form id="grade-action-form" class="form-grid"><label>Grade ID<input name="grade_id" type="number" min="1" required></label><div class="action-row"><button type="button" class="outline-button" id="approve-grade">Approve grade</button><button type="button" class="primary-button" id="publish-grade">Publish grade</button></div></form><p class="muted">Use the grade ID returned after saving a grade. Only approved grades should be published.</p></div>
+    </section>
+
+    <section class="workspace-section" id="section-projects" hidden>
+      <div class="content-card"><p class="eyebrow">PROJECT SUPERVISION</p><h2>Create student project</h2><form id="project-form" class="form-grid"><label>Course<select name="course_id" id="project-course" required></select></label><label>Student user ID<input name="student_id" type="number" min="1" required></label><label class="full">Project title<input name="title" required minlength="3"></label><label class="full">Description<textarea name="description" rows="2"></textarea></label><div class="full"><button class="primary-button">Create project</button></div></form></div>
+      <div class="content-card"><div class="section-heading"><div><p class="eyebrow">PROJECT TRACKING</p><h2>Student projects</h2></div><button class="outline-button" data-reload="projects">↻ Refresh</button></div><div id="projects-panel" class="data-list"></div></div>
+    </section>
+    <p class="page-foot">AcademicFlow · Professor workspace</p>
+  </main>
+</div>
+</body></html>

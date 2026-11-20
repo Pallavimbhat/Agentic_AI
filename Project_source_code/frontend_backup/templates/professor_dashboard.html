@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor Workspace | {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="/static/js/dashboard.js" defer></script>
+</head>
+<body data-role="professor">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/professor"><span class="brand-mark">A</span><span>Academic<span>Flow</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="/professor">▦ <span>Overview</span></a>
+      <a class="nav-link" href="#courses">▤ <span>My Courses</span></a>
+      <a class="nav-link" href="#courses">▧ <span>Learning Materials</span></a>
+      <a class="nav-link" href="#coming-soon">▣ <span>Assignments</span></a>
+      <a class="nav-link" href="#coming-soon">◫ <span>Submissions & Reviews</span></a>
+      <a class="nav-link" href="#coming-soon">✓ <span>Grading</span></a>
+      <a class="nav-link" href="#coming-soon">◇ <span>Student Projects</span></a>
+      <div class="side-bottom">
+        <div class="side-label">ACCOUNT</div>
+        <button class="nav-link logout-button" id="logout-button">↪ <span>Sign out</span></button>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="breadcrumb">Workspace / Overview</div><h1>Professor Dashboard</h1></div>
+        <div class="profile-chip"><div class="avatar" id="user-avatar">P</div><div><strong id="user-name">Loading…</strong><small>Professor</small></div></div>
+      </header>
+      <section class="welcome-row">
+        <div><p class="eyebrow">YOUR ACADEMIC WORKSPACE</p><h2>Welcome back, <span id="welcome-name">Professor</span> 👋</h2><p class="muted">Manage your courses and keep your academic activities moving.</p></div>
+        <div class="date-chip" id="today-date"></div>
+      </section>
+      <section class="stats-grid">
+        <article class="stat-card"><span class="stat-icon purple">▤</span><p>My courses</p><strong id="course-count">—</strong><small>Courses assigned to you</small></article>
+        <article class="stat-card"><span class="stat-icon blue">◎</span><p>Account status</p><strong id="account-status">—</strong><small>Authenticated session</small></article>
+        <article class="stat-card"><span class="stat-icon green">✦</span><p>Workspace role</p><strong>Professor</strong><small>Role-based access enabled</small></article>
+      </section>
+      <section class="content-card" id="courses">
+        <div class="section-heading"><div><p class="eyebrow">ACADEMIC MANAGEMENT</p><h2>My Courses</h2><p class="muted">Your courses loaded from the Course Organizer API.</p></div><button class="outline-button" id="refresh-button">↻ Refresh</button></div>
+        <div id="course-list" class="course-list"><div class="loading-state">Loading your courses…</div></div>
+      </section>
+      <section class="content-card coming-card" id="coming-soon">
+        <p class="eyebrow">MORE WORKSPACE MODULES</p><h2>Academic tools</h2>
+        <p class="muted">Assignments, submission reviews, grading, project tracking and agent activity will be connected here in the next implementation steps.</p>
+      </section>
+      <p class="page-foot">AcademicFlow · Professor workspace</p>
+    </main>
+  </div>
+</body>
+</html>

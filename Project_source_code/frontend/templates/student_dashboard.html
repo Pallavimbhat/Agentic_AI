@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Workspace | {{ app_name }}</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css?v=20261120d">
+    <script src="/static/js/dashboard.js?v=20261120d" defer></script>
+</head>
+
+<body data-role="student">
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a class="brand" href="/student">
+            <span class="brand-mark">A</span>
+            <span>Academic<span>Flow</span></span>
+        </a>
+
+        <div class="side-label">WORKSPACE</div>
+
+        <button class="nav-link active" data-section="overview">▦ <span>Overview</span></button>
+        <button class="nav-link" data-section="courses">▤ <span>My Courses</span></button>
+        <button class="nav-link" data-section="materials">▧ <span>Learning Materials</span></button>
+        <button class="nav-link" data-section="assignments">▣ <span>Assignments</span></button>
+        <button class="nav-link" data-section="grades">✓ <span>Grades & Feedback</span></button>
+        <button class="nav-link" data-section="projects">◇ <span>My Projects</span></button>
+        <button class="nav-link" data-section="assistant">✦ <span>AI Study Assistant</span></button>
+
+        <div class="side-bottom">
+            <div class="side-label">ACCOUNT</div>
+            <button class="nav-link logout-button" id="logout-button">↪ <span>Sign out</span></button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <div class="breadcrumb" id="breadcrumb">Workspace / Student Dashboard</div>
+                <h1 id="page-title">Student Dashboard</h1>
+            </div>
+
+            <div class="profile-chip">
+                <div class="avatar" id="user-avatar">S</div>
+                <div>
+                    <strong id="user-name">Loading...</strong>
+                    <small>Student</small>
+                </div>
+            </div>
+        </header>
+
+        <div id="notice" class="notice" hidden></div>
+
+        <!-- OVERVIEW -->
+
+        <section class="student-section" id="section-overview">
+
+            <section class="welcome-row" id="welcome-panel">
+                <div>
+                    <p class="eyebrow">YOUR LEARNING WORKSPACE</p>
+                    <h2>Welcome back, <span id="welcome-name">Student</span> 👋</h2>
+                    <p class="muted">Your courses, learning materials and academic progress in one place.</p>
+                </div>
+                <div class="date-chip" id="today-date"></div>
+            </section>
+
+            <section class="stats-grid" id="stats-panel">
+                <article class="stat-card">
+                    <span class="stat-icon purple">▤</span>
+                    <p>Enrolled courses</p>
+                    <strong id="course-count">—</strong>
+                    <small>Your active learning spaces</small>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-icon blue">◎</span>
+                    <p>Account status</p>
+                    <strong id="account-status">—</strong>
+                    <small>Authenticated session</small>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-icon green">✓</span>
+                    <p>Published grades</p>
+                    <strong id="grade-count">—</strong>
+                    <small>Grades released by professors</small>
+                </article>
+            </section>
+
+            <section class="content-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR LEARNING</p>
+                        <h2>My Courses</h2>
+                        <p class="muted">Your enrolled courses, loaded from the academic database.</p>
+                    </div>
+                    <button class="outline-button" id="refresh-button">↻ Refresh</button>
+                </div>
+
+                <div id="overview-course-list" class="course-list">
+                    <div class="loading-state">Loading your courses...</div>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">UPCOMING WORK</p>
+                        <h2>Assignments</h2>
+                    </div>
+                    <button class="outline-button" data-section="assignments">View all</button>
+                </div>
+
+                <div id="student-assignments-overview">
+                    <div class="loading-state">Loading assignments...</div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- COURSES -->
+
+        <section class="student-section" id="section-courses" hidden>
+            <section class="content-card">
+                <p class="eyebrow">YOUR LEARNING</p>
+                <h2>My Courses</h2>
+                <div id="course-list" class="course-list"></div>
+            </section>
+        </section>
+
+        <!-- MATERIALS -->
+
+        <section class="student-section" id="section-materials" hidden>
+            <section class="content-card">
+                <p class="eyebrow">LEARNING RESOURCES</p>
+                <h2>Learning Materials</h2>
+                <p class="muted">Notes and resources shared by professors in your enrolled courses.</p>
+                <div id="materials-panel">
+                    <div class="loading-state">Loading learning materials...</div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ASSIGNMENTS -->
+
+        <section class="student-section" id="section-assignments" hidden>
+            <section class="content-card">
+                <p class="eyebrow">COURSEWORK</p>
+                <h2>Assignments</h2>
+                <p class="muted">Review instructions and deadlines, then upload your work.</p>
+                <div id="student-assignments-panel">
+                    <div class="loading-state">Loading assignments...</div>
+                </div>
+            </section>
+        </section>
+
+        <!-- GRADES -->
+
+        <section class="student-section" id="section-grades" hidden>
+            <section class="content-card">
+                <p class="eyebrow">YOUR RESULTS</p>
+                <h2>Grades & Feedback</h2>
+                <p class="muted">Only grades published by your professor are shown here.</p>
+                <div id="student-grades-panel">
+                    <div class="loading-state">Loading grades...</div>
+                </div>
+            </section>
+        </section>
+
+        <!-- PROJECTS -->
+
+        <section class="student-section" id="section-projects" hidden>
+            <section class="content-card">
+                <p class="eyebrow">PROJECT TRACKER</p>
+                <h2>My Projects</h2>
+                <p class="muted">Track your assigned projects and update milestone progress.</p>
+                <div id="student-projects-panel">
+                    <div class="loading-state">Loading projects...</div>
+                </div>
+            </section>
+        </section>
+
+        <!-- AI STUDY ASSISTANT -->
+
+        <section class="student-section" id="section-assistant" hidden>
+
+            <section class="content-card assistant-card">
+
+                <div class="assistant-heading">
+                    <div>
+                        <p class="eyebrow">ACADEMIC SUPPORT</p>
+                        <h2>AcademicFlow AI Assistant</h2>
+                        <p class="muted">
+                            Your intelligent academic assistant.
+                            Ask questions about courses, assignments,
+                            notes, grades and academic progress.
+                        </p>
+                    </div>
+
+                    <span class="assistant-status">● AI Assistant</span>
+                </div>
+
+                <div id="assistant-messages"
+                     class="assistant-messages"
+                     aria-live="polite">
+
+                    <div class="assistant-welcome">
+                        <h3>Hello! 👋</h3>
+                        <p>
+                            I'm your AcademicFlow AI Assistant.
+                            How can I help you today?
+                        </p>
+
+                        <div class="assistant-suggestions">
+                            <button type="button"
+                                data-assistant-prompt="List my available courses.">
+                                My Courses
+                            </button>
+
+                            <button type="button"
+                                data-assistant-prompt="Show my assignments.">
+                                My Assignments
+                            </button>
+
+                            <button type="button"
+                                data-assistant-prompt="Show my published grades.">
+                                My Grades
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="assistant-execution"
+                     class="assistant-execution"
+                     hidden>
+                </div>
+
+                <form id="assistant-form" class="assistant-input-area">
+
+                    <textarea
+                        id="assistant-input"
+                        placeholder="Ask AcademicFlow anything..."
+                        rows="2"
+                        maxlength="5000"
+                        required>
+                    </textarea>
+
+                    <button type="submit"
+                            id="assistant-send"
+                            class="primary-button">
+                        Send ↑
+                    </button>
+
+                </form>
+
+                <p class="assistant-disclaimer">
+                    Responses are generated using your authenticated academic context.
+                </p>
+
+            </section>
+
+        </section>
+
+        <p class="page-foot">AcademicFlow · Student Workspace</p>
+
+    </main>
+</div>
+
+</body>
+</html>

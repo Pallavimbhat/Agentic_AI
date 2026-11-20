@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11152b">
+    <title>Sign in | {{ app_name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/login.js" defer></script>
+</head>
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="brand-panel">
+            <div class="brand-lockup">
+                <div class="brand-mark">A</div>
+                <span>Academic<span class="brand-light">Flow</span></span>
+            </div>
+
+            <div class="brand-copy">
+                <p class="eyebrow">YOUR ACADEMIC WORKSPACE</p>
+                <h1>Everything academic.<br><span>One intelligent space.</span></h1>
+                <p class="brand-description">
+                    Bring courses, learning resources, assignments and projects
+                    together in one organised workspace.
+                </p>
+            </div>
+
+            <div class="brand-footer">
+                <span class="status-dot"></span>
+                Built for focused learning and teaching
+            </div>
+            <div class="decor decor-one"></div>
+            <div class="decor decor-two"></div>
+        </section>
+
+        <section class="form-panel">
+            <div class="mobile-brand">
+                <div class="brand-mark">A</div>
+                <span>Academic<span class="brand-light">Flow</span></span>
+            </div>
+
+            <div class="form-content">
+                <p class="eyebrow form-eyebrow">WELCOME BACK</p>
+                <h2>Sign in to your account</h2>
+                <p class="form-subtitle">Enter your details to continue to your workspace.</p>
+
+                <form id="login-form">
+                    <label for="email">Email address</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <div class="password-label">
+                        <label for="password">Password</label>
+                    </div>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <p id="login-error" class="form-error" role="alert" aria-live="polite"></p>
+                    <button id="login-button" type="submit">
+                        <span class="button-text">Sign in</span>
+                        <span class="button-arrow" aria-hidden="true">→</span>
+                    </button>
+                </form>
+
+                <p class="secure-note">
+                    <span aria-hidden="true">●</span>
+                    Secure sign-in to your academic workspace
+                </p>
+            </div>
+
+            <footer class="form-footer">
+                <span>AcademicFlow</span>
+                <span>Course • Notes • Assignments • Projects</span>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
